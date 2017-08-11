@@ -7,8 +7,8 @@ Ripple is a responsive storage implementation that allows you to program data-dr
 .. |licence| image:: https://img.shields.io/badge/License-Apache%202.0-blue.svg
    :target: https://github.com/globus-labs/ripple/blob/lustre/LICENSE
    :alt: Apache Licence V2.0
-.. |build-status| image:: https://travis-ci.com/globus-labs/ripple.svg
-   :target: https://travis-ci.com/globus-labs/ripple
+.. |build-status| image:: https://travis-ci.org/globus-labs/ripple.svg?branch=master
+   :target: https://travis-ci.org/globus-labs/ripple
    :alt: Build status
 
 
