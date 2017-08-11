@@ -1,15 +1,6 @@
 Ripple Documentation
 ==================================
 
-.. toctree::
-   :maxdepth: 2
-   :caption: Contents:
-
-   license
-
-
-
-
 Quickstart
 ==========
 
@@ -39,8 +30,6 @@ Ripple requires the following:
 For testing:
 
 * nose
-
-
 
 Indices and tables
 ==================
