@@ -10,7 +10,9 @@ Ripple is a responsive storage implementation that allows you to program data-dr
 .. |build-status| image:: https://travis-ci.org/globus-labs/ripple.svg?branch=master
    :target: https://travis-ci.org/globus-labs/ripple
    :alt: Build status
-
+.. |docs| image:: https://readthedocs.org/projects/ripple/badge/?version=latest
+  :target: http://ripple.readthedocs.io/en/latest/?badge=latest
+  :alt: Documentation Status
 
 QuickStart
 ==========
