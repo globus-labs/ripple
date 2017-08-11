@@ -6,7 +6,7 @@ Ripple v0.0.2
 
 This is the current implementation of Ripple. 
 
-Improving reliablity
+Improve reliablity
 
 Ripple v0.1.0
 -------------
