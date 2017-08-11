@@ -1,35 +1,28 @@
 Ripple Documentation
 ==================================
 
-Quickstart
-==========
 
-Installing
-----------
+Contents:
 
-1. Download Ripple::
+.. toctree::
+   :maxdepth: 3
+   :caption: Overview
 
-    $ git clone https://github.com/ryanchard/ripple.git
+   overview/overview.rst
+   overview/quickstart.rst
 
-2. Install::
-    
-    $ cd ripple
-    $ python3 setup.py install
+.. toctree::
+   :maxdepth: 4
+   :caption: User Guide
 
-3. Run ripple::
+   usage/usage.rst
 
-	$ ripple
 
-Requirements
-============
+.. toctree::
+   :maxdepth: 3
+   :caption: Roadmap
 
-Ripple requires the following:
-
-* Python 3.5+
-
-For testing:
-
-* nose
+   roadmap/roadmap.rst
 
 Indices and tables
 ==================

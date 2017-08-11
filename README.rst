@@ -2,8 +2,6 @@ Ripple - Responsive Storage
 ==================================
 |licence| |build-status| |docs|
 
-Ripple is a responsive storage implementation that allows you to program data-driven events across distributed devices.
-
 .. |licence| image:: https://img.shields.io/badge/License-Apache%202.0-blue.svg
    :target: https://github.com/globus-labs/ripple/blob/lustre/LICENSE
    :alt: Apache Licence V2.0
@@ -13,6 +11,15 @@ Ripple is a responsive storage implementation that allows you to program data-dr
 .. |docs| image:: https://readthedocs.org/projects/ripple/badge/?version=latest
   :target: http://ripple.readthedocs.io/en/latest/?badge=latest
   :alt: Documentation Status
+
+Ripple is a responsive storage implementation that allows you to program data-driven events across distributed devices.
+
+Overview
+========
+
+Deploying the Ripple agent on a device integrates it into a distributed data management fabric. Once installed, the agent is capable of monitoring the underlying file system for data events (e.g., file being created and modified). Using the management console (https://ripple.globuscs.info/) you can create custom rules comprised of triggers and actions.
+
+You need a Globus (https://www.globus.org/) account in order to register an agent and log into the management console.
 
 QuickStart
 ==========
@@ -33,3 +40,4 @@ QuickStart
 
     $ ripple
 
+5. Go to https://ripple.globuscs.info/ and create rules
