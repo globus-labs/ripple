@@ -5,10 +5,10 @@ Ripple - Responsive Storage
 Ripple is a responsive storage implementation that allows you to program data-driven events across distributed devices.
 
 .. |licence| image:: https://img.shields.io/badge/License-Apache%202.0-blue.svg
-   :target: https://github.com/ryanchard/ripple/blob/lustre/LICENSE
+   :target: https://github.com/globus-labs/ripple/blob/lustre/LICENSE
    :alt: Apache Licence V2.0
-.. |build-status| image:: https://travis-ci.com/ryanchard/ripple.svg?token=R45vWqp1QBi9csDssa5Z&branch=master
-   :target: https://travis-ci.com/ryanchard/ripple
+.. |build-status| image:: https://travis-ci.com/globus-labs/ripple.svg
+   :target: https://travis-ci.com/globus-labs/ripple
    :alt: Build status
 
 
