@@ -1,0 +1,1 @@
+from ripple.observers import base_observer
