@@ -3,8 +3,10 @@ Usage
 
 Once the Ripple agent has been deployed on a device it will report itself to the cloud service. It can then be selected from the management website as an agent to register triggers and perform actions. 
 
-Management Website - https://ripple.globuscs.info/
+Management Website
 ==================
+
+https://ripple.globuscs.info/
 
 The management website provides a user-friendly method of defining and managing rules and monitoring events. To use the website you must login with a Globus account. This will determine which agents would will have access to.
 
