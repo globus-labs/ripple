@@ -4,16 +4,16 @@ Roadmap
 Ripple v0.0.2
 -------------
 
+Improve reliablity
+
 This is the current implementation of Ripple. 
 
-Improve reliablity
+Integrate the execution provider library.
 
 Ripple v0.1.0
 -------------
 
-Integration of the execution provider library.
-
-Improved user interface.
+Improve user interface.
 
 Ripple v0.2.0
 -------------

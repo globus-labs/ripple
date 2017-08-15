@@ -60,7 +60,12 @@ class RippleRunner():
         API and request jobs for this endpoint.
         """
         payload = {'Endpoint': RippleConfig().endpoint_id}
-        r = requests.post(RippleConfig().get_jobs_path, data=payload)
-        data = json.loads(r.text)
+        data = {}
+        try:
+            r = requests.post(RippleConfig().get_jobs_path, data=payload)
+            data = json.loads(r.text)
+        except Exception as e:
+            logger.error("Did not receive proper json when polling for jobs.")
+            logger.error(e)
         # logger.debug("Runner: polled new job: %s" % data)
         return data
