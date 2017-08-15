@@ -31,7 +31,7 @@ class BaseRunner():
         payload = {'endpoint_uuid': RippleConfig().endpoint_id,
                    'status_code': 'COMPLETE', 'status_message': 'run',
                    'event': job, 'job_id': job['job_id'],
-                   'output': job['output']}
+                   'output': job['output'], 'err': job['err']}
         logger.debug(payload)
         r = requests.post(RippleConfig().update_status_path, json=payload)
         data = json.loads(r.text)
