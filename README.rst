@@ -26,7 +26,7 @@ QuickStart
 
 1. Download Ripple::
 
-    $ git clone https://github.com/ryanchard/ripple.git
+    $ git clone https://github.com/globus-labs/ripple.git
 
 2. Install requirements::
 
