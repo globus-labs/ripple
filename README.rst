@@ -12,7 +12,12 @@ Ripple - Responsive Storage
   :target: http://ripple.readthedocs.io/en/latest/?badge=latest
   :alt: Documentation Status
 
-Ripple is a responsive storage implementation that allows you to program data-driven events across distributed devices.
+Ripple is a prototype responsive storage implementation that allows you to program data-driven events across distributed devices.
+
+Disclaimer
+==========
+
+Ripple is an active research project and is not supported by Globus. Currently, Ripple is developed and maintained by one user. Feel free to contact me at rchard@anl.gov if you have any questions or would like to discuss potential use cases.
 
 Overview
 ========
