@@ -17,7 +17,7 @@ Ripple is a prototype responsive storage implementation that allows you to progr
 Disclaimer
 ==========
 
-Ripple is an active research project and is not supported by Globus. Currently, Ripple is developed and maintained by one user. Feel free to contact me at rchard@anl.gov if you have any questions or would like to discuss potential use cases.
+Ripple is an active research project and is not maintained by Globus. Currently, Ripple is developed and supported by just one person. Feel free to contact me at rchard@anl.gov if you have any questions or would like to discuss potential use cases.
 
 Overview
 ========
