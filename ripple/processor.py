@@ -63,9 +63,9 @@ class RippleProcessor():
         args = {'filename': event['action']['target_name'].replace("/~/", ""),
                 'path': event['action']['target_path'],
                 'pathname': event['action']['target_pathname']}
-
+        
         for k, val in params.items():
-            if '$' in val:
+            if '$' in val and 'match' not in k:
                 params[k] = Template(val).substitute(args)
 
         event['action']['parameters'] = params
