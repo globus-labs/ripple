@@ -33,7 +33,7 @@ class SlurmRunner(BaseRunner):
         logger.info("In slurm submit command")
         cmd = "cd %s; sbatch %s" % (job['target_path'], job['target_name'])
         logger.info("Executing '%s'" % cmd)
-        subprocess.Popen([cmd], shell=True, stdout=subprocess.PIPE,
+        p = subprocess.Popen([cmd], shell=True, stdout=subprocess.PIPE,
                              stderr=subprocess.PIPE)
         # Give it a few seconds then report the output
         time.sleep(3)
