@@ -2,6 +2,7 @@ import time
 import json
 import requests
 from ripple.runners.shell.shell_runner import ShellRunner
+from ripple.runners.slurm.slurm_runner import SlurmRunner
 
 from ripple import logger, RippleConfig
 
@@ -53,6 +54,11 @@ class RippleRunner():
                 runner.report_job(job)
             if job['action_type'] == 'singularity':
                 pass
+        if job['service'] == 'batch':
+            if job['action_type'] == 'slurm':
+                runner = SlurmRunner()
+                runner.submit_job(job)
+                runner.report_job(job)
 
     def poll_for_jobs(self):
         """
