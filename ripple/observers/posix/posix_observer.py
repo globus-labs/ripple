@@ -2,6 +2,8 @@ import os
 import time
 from watchdog.events import PatternMatchingEventHandler
 from watchdog.observers import Observer
+from watchdog.observers.polling import PollingObserver
+
 from ripple.observers.base_observer import BaseObserver
 from ripple import logger, RippleConfig
 
@@ -22,6 +24,10 @@ class PosixObserver(BaseObserver):
 
         # Create an observer and schedule each of the directories
         self.observer = Observer()
+        logger.debug("Starting observer: %s" % RippleConfig().monitor)
+        if RippleConfig().monitor == "poll":
+            self.observer = PollingObserver()
+
         for d in listen_dirs:
             # Put this in a try so it doesn't crash if the dir doesnt exist
             if os.path.isdir(d):
@@ -69,7 +75,6 @@ class MyEventHandler(PatternMatchingEventHandler):
         This is executed if any event is detected. Could be useful for
         doing some admin work later.
         """
-        # print("got an event! %s" % event)
         logger.info("Captured POSIX event: %s" % event)
         # Check if any rule should be applied for this event
         self.monitor.check_rules(event)

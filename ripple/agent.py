@@ -19,8 +19,8 @@ class RippleAgent():
         try:
             while True:
                 if RippleConfig().new_rules:
-                    # I need to use a stoppable thread or make the thread set
-                    # the observer to stop
+                    # I need to use a stoppable thread or make
+                    # the thread set the observer to stop
                     if mon_thread is not None:
                         mon_thread = None
                     # the watchdog monitor is blocking, so we need
@@ -48,10 +48,10 @@ class RippleAgent():
             self.watchdog_ob.join()
         except Exception:
             pass
-
-        if RippleConfig().monitor == "inotify":
+        mon = RippleConfig().monitor
+        if mon == "inotify" or mon == "poll":
             self.watchdog_ob = PosixObserver()
             self.watchdog_ob.monitor()
-        elif RippleConfig().monitor == "lustre":
+        elif mon == "lustre":
             self.lustre_mon = LustreObserver()
             self.lustre_mon.monitor()
