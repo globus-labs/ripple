@@ -31,7 +31,7 @@ class SlurmRunner(BaseRunner):
         job['output'] = ''
         job['err'] = ''
         logger.info("In slurm submit command")
-        cmd = "cd %s; sbatch %s" % (job['target_path'], job['target_file'])
+        cmd = "cd %s; sbatch %s" % (job['target_path'], job['target_name'])
         logger.info("Executing '%s'" % cmd)
         subprocess.Popen([cmd], shell=True, stdout=subprocess.PIPE,
                              stderr=subprocess.PIPE)
