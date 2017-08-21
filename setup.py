@@ -11,6 +11,7 @@ setup(
     install_requires=['sqlalchemy', 'psycopg2', 'boto3', 'watchdog'],
     packages=['ripple', 'ripple.observers', 'ripple.observers.posix',
               'ripple.runners', 'ripple.runners.shell',
+              'ripple.runners.slurm',
               'ripple.observers.lustre'],
     package_data={'': ['*.ini']},
     entry_points={'console_scripts':
