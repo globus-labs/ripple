@@ -24,11 +24,16 @@ class RippleRunner():
             self.jobs = self.poll_for_jobs()
 
             for job in self.jobs:
-                job = json.loads(job)
-                if job['event_uuid'] not in self.completed_jobs:
-                    result = self.execute_job(job)
+                try:
+                    job = json.loads(job)
+                    if job['event_uuid'] not in self.completed_jobs:
+                        result = self.execute_job(job)
 
-                    self.record_finished_job(job, result)
+                        self.record_finished_job(job, result)
+                except Exception as e:
+                    logger.error("Did not receive proper " +
+                                 "json when polling for jobs.")
+                    logger.error(e)
 
             time.sleep(float(RippleConfig().runner_poll_rate))
 
