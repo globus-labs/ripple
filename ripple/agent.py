@@ -30,7 +30,7 @@ class RippleAgent():
                     mon_thread.daemon = True
                     mon_thread.start()
                     RippleConfig().new_rules = False
-                time.sleep(5)
+                time.sleep(15)
 
         except KeyboardInterrupt:
             try:

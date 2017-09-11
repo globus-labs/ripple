@@ -111,8 +111,13 @@ class RippleConfig(object, metaclass=Singleton):
         # only works with query params.
         payload = {'Endpoint': self.endpoint_id}
 
-        r = requests.post(self.get_rules_path, data=payload)
-        data = json.loads(r.text)
+        try:
+            r = requests.post(self.get_rules_path, data=payload)
+            data = json.loads(r.text)
+        except Exception as e:
+            logger.error("Did not receive proper json when polling for jobs.")
+            logger.error(e)
+            return
         json_rules = []
         for rule in data:
             rule = json.loads(rule)
