@@ -2,20 +2,21 @@ import os
 import time
 import subprocess
 import sys
+import uuid
+import json
+import re
 
-# from ripple.observers.base_observer import BaseObserver
-# from ripple import logger, RippleConfig
+from ripple.observers.base_observer import BaseObserver
+from ripple import logger, RippleConfig
 
 
-# class IPCObserver(BaseObserver):
-class IPCObserver():
+class IPCObserver(BaseObserver):
     """
     Set up the polling IPC monitor. It will use the
     "ipcs" command to query for shared memory segments
     and will report those that have been created and removed.
     """
     def monitor(self):
-        self.lustre_path = "/mnt/scratch/"
         self.segments = {}
         self.poll(True)
 
@@ -25,9 +26,8 @@ class IPCObserver():
 
     def poll(self, start=False):
         """
-        Use the ipcs command to get the current memory segments
-        and compare them to the segments dict. If they are new,
-        or any are still there, raise an event.
+        Use the ipcs command to get memory events and compare
+        them against active rules. 
         """
 
         segments = self.get_segments(start)
@@ -36,8 +36,8 @@ class IPCObserver():
         print (events)
 
         # now process the events against rules
-        # for event in events:
-            # self.check_rules(self, event)
+        for event in events:
+            self.check_rules(event)
 
 
     def check_rules(self, event):
@@ -48,15 +48,19 @@ class IPCObserver():
         0x00000000 262145     ryan       600        393216     2          dest  
         """
         logger.debug("Checking rules")
-
         # Iterate through rules and try to apply them
         for rule in RippleConfig().rules[:]:
             event_type = event['type']
             if self.match_condition(event_type, rule):
+                # Currently putting in pathname as key, need to
+                # think of a better way to handle "other" information
                 send_event = {'event': {
                              'type': event_type,
                              'size': event['bytes'],
                              'key': event['key'],
+                             'pathname': event['key'],
+                             'path': event['key'],
+                             'filename': event['key'],
                              'shmid': event['shmid'],
                              'perms': event['perms'],
                              'owner': event['owner'],
@@ -66,11 +70,6 @@ class IPCObserver():
                              }
                             }
                 send_event.update(rule)
-                # check if it is a gcmd, if so, replace the action
-                if re.match(file_name, '.*.gcmd'):
-                    action = self.get_cmd(src_path)
-                    if action:
-                        send_event.update(action)
 
                 # Now push it down the queue
                 message = json.dumps(send_event)
@@ -84,8 +83,9 @@ class IPCObserver():
         Match the event against a rule's conditions.
         """
         logger.debug("Matching rule conditions")
-        # Use 'in' here to allow many trigger events on one rule.
-        if event_type in rule_event_type:
+        rule_event_type = rule['trigger']['event']
+        
+        if event_type == rule_event_type:
             logger.debug("Matching rule conditions: type MATCHED")
             # Hm, might be worth adding perms, owner, status?
             return True
@@ -116,8 +116,12 @@ class IPCObserver():
         events = []
         for e in new:
             e['type'] = 'Create'
+            if 'status' not in e:
+                e['status'] = 'other'
             events.append(e)
         for e in removed:
+            if 'status' not in e:
+                e['status'] = 'other'
             e['type'] = 'Delete'
             events.append(e)
 
@@ -154,7 +158,3 @@ class IPCObserver():
         Terminate the monitor
         """
         logger.debug("Terminating POSIX monitor.")
-        
-if __name__ == '__main__':
-    n = IPCObserver()
-    n.monitor()

@@ -2,6 +2,7 @@ import time
 import threading
 from ripple.observers.posix.posix_observer import PosixObserver
 from ripple.observers.lustre.lustre_observer import LustreObserver
+from ripple.observers.ipc.ipc_observer import IPCObserver
 from ripple import logger, RippleConfig
 
 
@@ -55,3 +56,6 @@ class RippleAgent():
         elif mon == "lustre":
             self.lustre_mon = LustreObserver()
             self.lustre_mon.monitor()
+        elif mon == "ipc":
+            self.ipc_mon = IPCObserver()
+            self.ipc_mon.monitor()
