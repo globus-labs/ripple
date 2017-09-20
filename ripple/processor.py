@@ -95,8 +95,13 @@ class RippleProcessor():
             new_path = event['event']['pathname']
         event['action']['target_pathname'] = new_path
         # now work out the filename and path
-        event_path = event['action']['target_pathname'].rsplit(os.sep, 1)[0]
-        file_name = event['action']['target_pathname'].rsplit(os.sep, 1)[1]
+        file_name = new_path
+        event_path = new_path
+        try:
+            event_path = event['action']['target_pathname'].rsplit(os.sep, 1)[0]
+            file_name = event['action']['target_pathname'].rsplit(os.sep, 1)[1]
+        except Exception as e:
+            logger.debug("Problem setting targets, leaving as is")
         event['action']['target_path'] = event_path
         event['action']['target_name'] = file_name
         if file_name is None or file_name == '':

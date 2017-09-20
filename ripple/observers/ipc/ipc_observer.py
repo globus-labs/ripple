@@ -60,7 +60,7 @@ class IPCObserver(BaseObserver):
                              'key': event['key'],
                              'pathname': event['key'],
                              'path': event['key'],
-                             'filename': event['key'],
+                             'name': event['key'],
                              'shmid': event['shmid'],
                              'perms': event['perms'],
                              'owner': event['owner'],
@@ -69,6 +69,7 @@ class IPCObserver(BaseObserver):
                              'hash': 'hashvalue'
                              }
                             }
+                print ("Sending event: %s" % send_event)
                 send_event.update(rule)
 
                 # Now push it down the queue

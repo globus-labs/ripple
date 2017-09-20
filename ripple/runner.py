@@ -31,8 +31,8 @@ class RippleRunner():
 
                         self.record_finished_job(job, result)
                 except Exception as e:
-                    logger.error("Did not receive proper " +
-                                 "json when polling for jobs.")
+                    logger.error("Failed to execute job.")
+                    logger.error(job)
                     logger.error(e)
 
             time.sleep(float(RippleConfig().runner_poll_rate))
@@ -75,6 +75,7 @@ class RippleRunner():
         try:
             r = requests.post(RippleConfig().get_jobs_path, data=payload)
             data = json.loads(r.text)
+            logger.debug("got data?")
         except Exception as e:
             logger.error("Did not receive proper json when polling for jobs.")
             logger.error(e)
