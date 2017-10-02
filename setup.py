@@ -10,6 +10,7 @@ setup(
     author='ryan',
     install_requires=['sqlalchemy', 'psycopg2', 'boto3', 'watchdog'],
     packages=['ripple', 'ripple.observers', 'ripple.observers.posix',
+              'ripple.observers.ipc',
               'ripple.runners', 'ripple.runners.shell',
               'ripple.runners.slurm',
               'ripple.observers.lustre'],
