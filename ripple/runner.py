@@ -75,7 +75,7 @@ class RippleRunner():
         try:
             r = requests.post(RippleConfig().get_jobs_path, data=payload)
             data = json.loads(r.text)
-            logger.debug("got data?")
+            
         except Exception as e:
             logger.error("Did not receive proper json when polling for jobs.")
             logger.error(e)
