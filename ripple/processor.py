@@ -62,7 +62,10 @@ class RippleProcessor():
         params = event['action']['parameters']
         args = {'filename': event['action']['target_name'].replace("/~/", ""),
                 'path': event['action']['target_path'],
-                'pathname': event['action']['target_pathname']}
+                'pathname': event['action']['target_pathname'],
+                'FILENAME': event['action']['target_name'].replace("/~/", ""),
+                'PATH': event['action']['target_path'],
+                'PATHNAME': event['action']['target_pathname']}
         
         for k, val in params.items():
             if '$' in val and 'match' not in k:
