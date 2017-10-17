@@ -55,7 +55,7 @@ class RippleProcessor():
             event = self.set_target(event)
             event = self.template_parameters(event)
 
-            logger.info("PROCESSOR: received event: %s" % event)
+#            logger.info("PROCESSOR: received event: %s" % event)
             self.report_event(event)
 
     def template_parameters(self, event):

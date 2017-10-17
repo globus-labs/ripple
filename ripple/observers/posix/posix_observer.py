@@ -75,6 +75,6 @@ class MyEventHandler(PatternMatchingEventHandler):
         This is executed if any event is detected. Could be useful for
         doing some admin work later.
         """
-        logger.info("Captured POSIX event: %s" % event)
+        #logger.info("Captured POSIX event: %s" % event)
         # Check if any rule should be applied for this event
         self.monitor.check_rules(event)

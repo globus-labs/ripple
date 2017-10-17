@@ -14,7 +14,7 @@ class BaseObserver():
         """
         Try to match a rule to this event. If nothing is found, return None
         """
-        logger.debug("Checking rules")
+        #logger.debug("Checking rules")
 
         # Extract the file and path names
         src_path = os.path.abspath(event.src_path)
@@ -69,11 +69,11 @@ class BaseObserver():
         rule_dir = rule['trigger']['parameters']['directory']
         rule_event_type = rule['trigger']['event']
         rule_file_name = rule['trigger']['parameters']['match']
-        logger.debug("Matching rule conditions")
-        print("Matching rule conditions")
+        #logger.debug("Matching rule conditions")
+        #print("Matching rule conditions")
         # Use 'in' here to allow many trigger events on one rule.
         if event_type in rule_event_type:
-            logger.debug("Matching rule conditions: type MATCHED")
+            #logger.debug("Matching rule conditions: type MATCHED")
             # Fix the problem of Win32 machine's paths being
             if rule_dir[-1] == "/" and event_path[-1] != "/":
                 # remove the last slash
@@ -81,10 +81,10 @@ class BaseObserver():
 
             if re.match(rule_dir.replace('\\', '/'),
                         event_path.replace('\\', '/')):
-                logger.debug("Matching rule conditions: dir MATCHED")
+                #logger.debug("Matching rule conditions: dir MATCHED")
                 # Check the file name actually matches ours
                 if re.match(rule_file_name, file_name):
-                    logger.debug("Matching rule conditions: file MATCHED")
+                    #logger.debug("Matching rule conditions: file MATCHED")
                     return True
         return False
 
