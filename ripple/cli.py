@@ -1,6 +1,7 @@
 import logging
 import threading
 import time
+import os
 from ripple import (logger, RippleAgent, RippleProcessor,
                     RippleRunner, RippleConfig)
 
@@ -25,7 +26,7 @@ def main():
         3. a proccessing thread that will report events to the API
         4. a thread for the job runner
     """
-    hdlr = logging.FileHandler('ripple.log')
+    hdlr = logging.FileHandler(os.path.expanduser('~') +'/.ripple/ripple.log')
 
     formatter = logging.Formatter('%(asctime)s %(levelname)s %(message)s')
     hdlr.setFormatter(formatter)

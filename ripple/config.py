@@ -28,11 +28,12 @@ class RippleConfig(object, metaclass=Singleton):
         self.api = 'https://m0vc2icw3m.execute-api.us-east-1.amazonaws.com'
         self.client_id = '054b488d-c88f-43b4-9c15-a7399631b4dd'
 
-        config_file = 'ripple/ripple.ini'
-        if 'config_file' in kwargs:
-            config_file = kwargs['config_file']
+        # config_file = os.path.expanduser('~') + '/.ripple/ripple.ini'
+        # if 'config_file' in kwargs:
+        #    config_file = kwargs['config_file']
 
-        self.load_config_file(config_file)
+        # self.load_config_file(config_file)
+        self.load_config_file(None)
 
         ripple_config = os.path.expanduser('~') + '/.ripple/config'
         self.load_ripple_config(ripple_config)
@@ -198,18 +199,18 @@ class RippleConfig(object, metaclass=Singleton):
 
     def load_config_file(self, config_file):
         # read config from a file
-        config = configparser.ConfigParser()
-        config.read(config_file)
+        #config = configparser.ConfigParser()
+        #config.read(config_file)
 
-        self.runner_poll_rate = config.get('Runner', 'poll_rate')
+        self.runner_poll_rate = 5 #config.get('Runner', 'poll_rate')
 
         # Sort out test config
-        self.test = config.get('Testing', 'test')
+        self.test = 'False' #config.get('Testing', 'test')
         if self.test == 'True':
             self.test = True
         else:
             self.test = False
-        self.test_dir = config.get('Testing', 'test_dir')
+        self.test_dir = None #config.get('Testing', 'test_dir')
 
         # Set up the queue
         self.queue = Queue(maxsize=0)

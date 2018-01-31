@@ -23,7 +23,7 @@ class RippleProcessor():
         logger.info(RippleConfig().report_event_path)
 
         r = requests.post(RippleConfig().report_event_path, json=event)
-        logger.info("Response: %s %s" % (r.status_code, r.reason))
+        # logger.info("Response: %s %s" % (r.status_code, r.reason))
 
         # Check it was successfully registered, otherwise try again
         # Note: this returns 500 at the moment as I haven't configured

@@ -72,6 +72,11 @@ class BaseObserver():
         #logger.debug("Matching rule conditions")
         #print("Matching rule conditions")
         # Use 'in' here to allow many trigger events on one rule.
+        try:
+            re.compile(rule_file_name)
+        except re.error:
+            logger.error("Invalid regex: %s" % rule_file_name)
+            return False
         if event_type in rule_event_type:
             #logger.debug("Matching rule conditions: type MATCHED")
             # Fix the problem of Win32 machine's paths being
