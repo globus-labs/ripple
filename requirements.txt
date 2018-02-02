@@ -1,5 +1,4 @@
 # for base project (also in setup.py)
-psycopg2
 boto3
 watchdog
 requests
