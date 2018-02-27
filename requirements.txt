@@ -4,3 +4,4 @@ watchdog
 requests
 globus_sdk
 python-jose
+psycopg2

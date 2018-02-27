@@ -26,7 +26,10 @@ def main():
         3. a proccessing thread that will report events to the API
         4. a thread for the job runner
     """
-    hdlr = logging.FileHandler(os.path.expanduser('~') +'/.ripple/ripple.log')
+    log_file = os.path.expanduser('~') + '/.ripple/ripple.log'
+    if not os.path.isdir(os.path.expanduser('~') + '/.ripple'):
+        os.mkdir(os.path.expanduser('~') + "/.ripple")
+    hdlr = logging.FileHandler(log_file)
 
     formatter = logging.Formatter('%(asctime)s %(levelname)s %(message)s')
     hdlr.setFormatter(formatter)
